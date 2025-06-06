@@ -28,5 +28,18 @@
     "postcss": "^8.5.4",
     "tailwindcss": "^3.4.3",
     "vite": "^6.3.5"
-  }
+  },
+  "description": "Frontend de la aplicación Mousiteca, una biblioteca musical personal para gestionar tus canciones, álbumes y artistas favoritos.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patriciabernardos/mousiteca-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patriciabernardos/mousiteca-web/issues"
+  },
+  "homepage": "https://github.com/patriciabernardos/mousiteca-web#readme"
 }
