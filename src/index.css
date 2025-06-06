@@ -1,3 +1,46 @@
+/* Importa las directivas base, componentes y utilidades de Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define la fuente personalizada 'Bebas Neue' */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/src/assets/fonts/BebasNeue-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Define la fuente personalizada 'Lato' en peso normal */
+@font-face {
+  font-family: 'Lato';
+  src: url('/src/assets/fonts/Lato-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Define la fuente personalizada 'Lato' en negrita */
+@font-face {
+  font-family: 'Lato';
+  src: url('/src/assets/fonts/Lato-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Estilos base personalizados usando Tailwind y fuentes definidas */
+@layer base {
+  body {
+    /* Aplica color de fondo, color de texto y fuente sans-serif personalizados */
+    @apply bg-mousiteca-light text-mousiteca-dark font-sans;
+    font-family: 'Lato', sans-serif; /* Asegura el uso de la fuente personalizada */
+  }
+
+  h1 {
+    /* Aplica fuente display y color personalizado para títulos h1 */
+    @apply font-display text-mousiteca-sky;
+    font-family: 'Bebas Neue', cursive; /* Asegura el uso de la fuente personalizada */
+  }
+}
