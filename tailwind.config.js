@@ -11,7 +11,7 @@ module.exports = {
           lavender: "#9386BE",
           sky: "#65C7EF",
           light: "#F0F2F7",
-          dark: "#231916",
+          dark: "#121212",
         },
       },
       fontFamily: {

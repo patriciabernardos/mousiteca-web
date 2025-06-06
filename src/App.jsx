@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Collections from './pages/Collections'
+import Navbar from './components/Navbar'
 import './App.css'
 
 /**
@@ -12,12 +13,10 @@ function App() {
 
   return (
     <>
-      {/* Título principal de la aplicación */}
-      <div className="text-3xl font-bold text-blue-500">
-        ¡Hello Mousiteca!
-      </div>
-      {/* Renderiza el componente Collections */}
-      <div className="text-l">
+      {/* Barra de navegación superior */}
+      <Navbar />
+      {/* Espacio superior para que el contenido no quede oculto bajo el navbar fijo */}
+      <div className="pt-20 text-l">
         <Collections />
       </div>
     </>
