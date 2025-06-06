@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import CollectionActions from '../components/CollectionActions';
 import ZoomImage from '../components/ZoomImage';
+import Modal from '../components/Modal'; // Asegúrate de tener este componente
 
 /**
  * Página Collections
@@ -10,6 +11,8 @@ import ZoomImage from '../components/ZoomImage';
 function Collections() {
   // Estado para almacenar la lista de colecciones
   const [collections, setCollections] = useState([]);
+  // Estado para el álbum seleccionado (para el modal)
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
 
   // Efecto para cargar las colecciones al montar el componente
   useEffect(() => {
@@ -18,6 +21,16 @@ function Collections() {
       .then(data => setCollections(data))
       .catch(err => console.error(err));
   }, []);
+
+  // Función para abrir el modal con los detalles del álbum
+  const handleView = (item) => {
+    setSelectedAlbum(item);
+  };
+
+  // Función para cerrar el modal
+  const handleCloseModal = () => {
+    setSelectedAlbum(null);
+  };
 
   return (
     // Contenedor principal con padding y centrado
@@ -38,7 +51,7 @@ function Collections() {
               {/* Acciones: Ver, Editar, Eliminar */}
               <div className="mt-2">
                 <CollectionActions
-                  onView={() => alert(`Ver ${item.album_title}`)}
+                  onView={() => handleView(item)}
                   onEdit={() => alert(`Editar ${item.album_title}`)}
                   onDelete={() => alert(`Eliminar ${item.album_title}`)}
                 />
@@ -49,6 +62,25 @@ function Collections() {
           </li>
         ))}
       </ul>
+
+      {/* Modal para ver detalles del álbum */}
+      <Modal open={!!selectedAlbum} onClose={handleCloseModal} title={selectedAlbum?.album_title}>
+        {selectedAlbum && (
+          <div>
+            <p><strong>Artista:</strong> {selectedAlbum.artist_name}</p>
+            <p><strong>Año:</strong> {selectedAlbum.release_year}</p>
+            <p><strong>Género:</strong> {selectedAlbum.genre}</p>
+            <p><strong>Formato:</strong> {selectedAlbum.format_name}</p>
+            <p><strong>Estado:</strong> {selectedAlbum.condition}</p>
+            <p><strong>Notas:</strong> {selectedAlbum.notes}</p>
+            <img
+              src={selectedAlbum.cover_image_url}
+              alt={selectedAlbum.album_title}
+              className="mt-4 w-full rounded"
+            />
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
